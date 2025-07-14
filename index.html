@@ -9,44 +9,28 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
-  body {
-    margin: 0;
-    background: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: 'Poppins', sans-serif;
+  * {
+    box-sizing: border-box;
   }
 
-  .phone-frame {
-    width: 360px;
-    height: 640px;
-    background: #111;
-    border-radius: 30px;
-    overflow: hidden;
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+    width: 100%;
+    background: #fff;
+  }
+
+  body {
     display: flex;
     flex-direction: column;
-    position: relative;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    border: 2px solid #222;
-  }
-
-  .notch {
-    width: 90px;
-    height: 20px;
-    background: #000;
-    border-radius: 0 0 10px 10px;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
+    height: 100vh;
   }
 
   .app-header {
     background: rgba(41, 39, 39, 0.753);
-    padding: 15px;
+    padding: 12px;
     text-align: center;
   }
 
@@ -55,67 +39,56 @@
     font-size: 18px;
     color: white;
     font-weight: bold;
-    text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   }
 
- .chat-area {
-  flex: 1;
-  position: relative;
-  overflow-y: auto;
+  .chat-area {
+    flex: 1;
+    position: relative;
+    overflow-y: auto;
 
-  /* 👇 New background setup */
-  background-image: url('https://i.pinimg.com/1200x/69/c4/a4/69c4a4a55769dad7e440436cd33b144f.jpg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-}
-
-  .chat-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 2.15;
-    z-index: 1;
+    background-image: url('https://i.pinimg.com/736x/2b/2f/36/2b2f36bbed5d28e7826cb3a0d8d0fad1.jpg');
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
   }
 
-#messages {
-  list-style: none;
-  padding: 10px;
-  margin: 0;
-  position: relative;
-  z-index: 2;
-}
+  #messages {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+  }
 
-#messages li {
-  padding: 8px 12px;
-  margin: 8px 0;
-  max-width: 80%;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 15px;
-  color: rgb(0, 0, 0);
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(3px);
-}
+  #messages li {
+    padding: 8px 12px;
+    margin: 8px 0;
+    max-width: 80%;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(3px);
+  }
 
   .input-area {
-    background: #000;
-    padding: 10px;
     display: flex;
-    align-items: center;
+    padding: 10px;
+    background: #000;
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
   }
 
   #input {
     flex: 1;
     padding: 10px;
-    background: #f0f0f0;
     border: none;
     border-radius: 20px;
-    outline: none;
     font-size: 14px;
+    outline: none;
+    background: #f0f0f0;
   }
 
   #submit {
@@ -134,48 +107,22 @@
   }
 </style>
 
-
-
 </head>
 <body>
 
 
-<!-- <div class="phone-frame">
-  <div class="notch"></div>
-
   <div class="app-header">
-    <h1>whatsapp ka baap</h1>
-  </div>
-
-  <div class="chat-area">
-    <img src="https://i.pinimg.com/736x/2b/2f/36/2b2f36bbed5d28e7826cb3a0d8d0fad1.jpg" class="chat-bg" alt="bg" />
-    <ul id="messages"></ul>
-  </div>
-
-  <div class="input-area">
-    <input id="input" type="text" placeholder="Type here.........." />
-    <button id="submit">send</button>
-  </div>
-</div> -->
-
-
-<div class="phone-frame">
-  <div class="notch"></div>
-
-  <div class="app-header">
-    <h1>whatsapp ka baap</h1>
-  </div>
-
-  <div class="chat-area">
-    <ul id="messages"></ul>
-  </div>
-
-  <div class="input-area">
-    <input id="input" type="text" placeholder="Type here.........." />
-    <button id="submit">send</button>
-  </div>
+  <h1>whatsapp ka baap</h1>
 </div>
 
+<div class="chat-area">
+  <ul id="messages"></ul>
+</div>
+
+<div class="input-area">
+  <input id="input" type="text" placeholder="Type here.........." />
+  <button id="submit">send</button>
+</div>
 
 
   <script src="/socket.io/socket.io.js"></script>
