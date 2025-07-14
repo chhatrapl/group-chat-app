@@ -7,122 +7,100 @@
 
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-
   * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
   }
 
   html, body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
     height: 100%;
-    width: 100%;
-    background: #fff;
+    background: #f4f4f4;
   }
 
-  body {
+  .container {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    max-width: 600px;
+    margin: auto;
+    border: 1px solid #ddd;
+    background: white;
   }
 
-  .app-header {
-    background: rgba(41, 39, 39, 0.753);
+  .header {
+    background: #333;
+    color: white;
     padding: 12px;
     text-align: center;
-  }
-
-  .app-header h1 {
-    margin: 0;
-    font-size: 18px;
-    color: white;
     font-weight: bold;
   }
 
-  .chat-area {
+  .chat {
     flex: 1;
-    position: relative;
-    overflow-y: auto;
-
-    background-image: url('https://i.pinimg.com/736x/2b/2f/36/2b2f36bbed5d28e7826cb3a0d8d0fad1.jpg');
-    background-size: auto 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-  }
-
-  #messages {
-    list-style: none;
     padding: 10px;
-    margin: 0;
-    position: relative;
-    z-index: 2;
+    overflow-y: auto;
   }
 
-  #messages li {
+  .chat div {
+    margin-bottom: 8px;
+    background: #e0e0e0;
     padding: 8px 12px;
-    margin: 8px 0;
-    max-width: 80%;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 15px;
-    color: #000;
-    background-color: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(3px);
+    border-radius: 8px;
+    max-width: 70%;
   }
 
-  .input-area {
+  .input-bar {
     display: flex;
     padding: 10px;
-    background: #000;
-    position: sticky;
-    bottom: 0;
-    z-index: 5;
+    background: #eee;
+    gap: 8px;
   }
 
   #input {
     flex: 1;
     padding: 10px;
-    border: none;
-    border-radius: 20px;
-    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
     outline: none;
-    background: #f0f0f0;
   }
 
   #submit {
-    margin-left: 10px;
     padding: 10px 15px;
-    border-radius: 20px;
     border: none;
-    background: #4f5bd5;
+    background: #333;
     color: white;
-    font-weight: bold;
+    border-radius: 6px;
     cursor: pointer;
   }
 
   #submit:hover {
-    background: #3a4ac0;
+    background: #555;
+  }
+
+  @media screen and (max-width: 600px) {
+    .container {
+      border: none;
+      height: 100vh;
+    }
   }
 </style>
+
 
 </head>
 <body>
 
 
-  <div class="app-header">
-  <h1>whatsapp ka baap</h1>
+<div class="container">
+  <div class="header">Simple Chat</div>
+  <div class="chat" id="messages"></div>
+  <div class="input-bar">
+    <input type="text" id="input" placeholder="Type message..." />
+    <button id="submit">Send</button>
+  </div>
 </div>
 
-<div class="chat-area">
-  <ul id="messages"></ul>
-</div>
-
-<div class="input-area">
-  <input id="input" type="text" placeholder="Type here.........." />
-  <button id="submit">send</button>
-</div>
 
 
   <script src="/socket.io/socket.io.js"></script>
